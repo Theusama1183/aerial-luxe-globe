@@ -4,27 +4,7 @@ import { Reveal, Stagger } from "@/components/Reveal";
 import { PlanetScene } from "@/components/PlanetScene";
 import { HeroBackground } from "@/components/HeroBackground";
 import { motion } from "framer-motion";
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Play,
-  Star,
-  Plus,
-  Minus,
-  Truck,
-  Plane,
-  Ship,
-  Warehouse,
-  Package,
-  Search,
-  Target,
-  Megaphone,
-  FileText,
-  Check,
-  TrendingUp,
-  BarChart3,
-} from "lucide-react";
-import { useState } from "react";
+import { ArrowRight, ArrowUpRight, Play, Star, Truck, Plane, Check } from "lucide-react";
 
 export const Route = createFileRoute("/")({
   head: () => ({
