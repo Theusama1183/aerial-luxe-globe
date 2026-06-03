@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/Nav";
 import { Reveal, Stagger } from "@/components/Reveal";
 import { PlanetScene } from "@/components/PlanetScene";
-import { HeroBackground } from "@/components/HeroBackground";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { HeroVideoBackground, HeroVideoPreview, VideoModal } from "@/components/HeroMedia";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -197,6 +197,7 @@ const longCases = [
     brand: "GlobalFreight Solutions",
     headline: "312% increase in organic traffic in 8 months",
     body: "A mid-size freight forwarder struggling with zero online presence. We rebuilt their website, launched a targeted SEO campaign, and built lead capture funnels that generated 87 qualified leads per month.",
+    image: "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=70",
     stats: [
       { v: "+312%", l: "Organic Traffic" },
       { v: "87", l: "Qualified Leads/Mo" },
@@ -208,6 +209,7 @@ const longCases = [
     brand: "MidWest Trucking Co.",
     headline: "From page 5 to #1 for 'trucking services' in their region",
     body: "A regional trucking company with an outdated website. We implemented local SEO, Google Business optimization, and a conversion-focused redesign that brought them to the top of search results.",
+    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=70",
     stats: [
       { v: "42 → #1", l: "Keyword Rankings" },
       { v: "120+", l: "Monthly Leads" },
@@ -219,6 +221,7 @@ const longCases = [
     brand: "ChainLink 3PL",
     headline: "2.5X conversion rate with new lead generation funnels",
     body: "A 3PL provider with plenty of traffic but poor conversion. We redesigned their funnel, added lead scoring, and implemented email nurture sequences that transformed their pipeline.",
+    image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=70",
     stats: [
       { v: "2.5X", l: "Conversion Rate" },
       { v: "+85%", l: "Lead Quality Score" },
@@ -283,8 +286,19 @@ const caseStudies = [
 /* -------------------- page -------------------- */
 
 function Home() {
+  const [videoOpen, setVideoOpen] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
     <div className="bg-white text-[#111111]">
+      <VideoModal open={videoOpen} onClose={() => setVideoOpen(false)} />
+
       {/* announcement bar */}
       <div className="fixed top-0 left-0 right-0 z-[60] bg-[#111] text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-3 px-6 py-2 text-xs">
@@ -300,10 +314,13 @@ function Home() {
       <Nav />
 
       {/* ============ HERO ============ */}
-      <section className="section-dark relative min-h-screen overflow-hidden">
-        <HeroBackground />
-        <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-32 pb-20">
-          <div className="max-w-3xl">
+      <section ref={heroRef} className="section-dark relative min-h-screen overflow-hidden">
+        <HeroVideoBackground />
+        <motion.div
+          style={{ y: heroY, opacity: heroOpacity }}
+          className="relative z-10 mx-auto grid min-h-screen max-w-7xl items-center gap-12 px-6 pt-32 pb-20 lg:grid-cols-[1.15fr_1fr]"
+        >
+          <div className="max-w-2xl">
             <Reveal>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-white/70 backdrop-blur">
                 <span className="relative h-1.5 w-1.5 rounded-full bg-white pulse-ring" />
@@ -311,7 +328,7 @@ function Home() {
               </div>
             </Reveal>
             <Reveal delay={0.05}>
-              <h1 className="font-display text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[88px]">
+              <h1 className="font-display text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[80px]">
                 Digital Marketing for
                 <span className="block text-white/60">Supply Chain Companies</span>
               </h1>
@@ -328,10 +345,15 @@ function Home() {
                   Book Strategy Call
                   <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                 </a>
-                <a href="#cases" className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-medium text-white transition hover:border-white hover:bg-white/5">
-                  See Case Studies
-                  <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </a>
+                <button
+                  onClick={() => setVideoOpen(true)}
+                  className="group inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-3 text-sm font-medium text-white transition hover:border-white hover:bg-white/5"
+                >
+                  <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[#111]">
+                    <Play className="h-3.5 w-3.5 translate-x-px fill-current" />
+                  </span>
+                  Watch Showreel
+                </button>
               </div>
             </Reveal>
 
@@ -345,12 +367,17 @@ function Home() {
                   </div>
                   <span className="uppercase tracking-widest">4.9 client rating</span>
                 </div>
-                <span className="uppercase tracking-widest">Logistics industry specialists</span>
-                <span className="uppercase tracking-widest">Proven growth strategies</span>
+                <span className="uppercase tracking-widest">Logistics specialists</span>
+                <span className="uppercase tracking-widest">Proven growth</span>
               </div>
             </Reveal>
           </div>
-        </div>
+
+          {/* Right side: custom video preview card */}
+          <div className="relative">
+            <HeroVideoPreview onOpen={() => setVideoOpen(true)} />
+          </div>
+        </motion.div>
 
         {/* scroll cue */}
         <div className="absolute bottom-28 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-white/40 md:flex">
@@ -486,6 +513,11 @@ function Home() {
           </Stagger>
         </div>
       </section>
+
+      {/* ============ PARALLAX IMAGE STRIP ============ */}
+      <ParallaxStrip />
+
+
 
       {/* ============ METHODOLOGY + RESULTS ============ */}
       <section className="section-dark relative overflow-hidden py-28">
@@ -741,28 +773,41 @@ function Home() {
           </Reveal>
 
           <div className="mt-16 space-y-8">
-            {longCases.map((c) => (
+            {longCases.map((c, idx) => (
               <Reveal key={c.brand}>
-                <div className="group grid gap-10 rounded-3xl border border-black/10 bg-white p-8 transition hover:border-black/40 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.15)] md:grid-cols-[1.2fr_1fr] md:p-12">
-                  <div>
-                    <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-[#666]">
-                      <span>{c.vertical}</span>
-                      <span className="h-1 w-1 rounded-full bg-black/30" />
-                      <span>{c.brand}</span>
+                <div className={`group grid gap-10 overflow-hidden rounded-3xl border border-black/10 bg-white p-8 transition hover:border-black/40 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.15)] md:grid-cols-[1fr_1.1fr] md:p-12 ${idx % 2 === 1 ? "md:[direction:rtl]" : ""}`}>
+                  <div className="relative overflow-hidden rounded-2xl md:[direction:ltr]">
+                    <motion.img
+                      src={c.image}
+                      alt={c.brand}
+                      loading="lazy"
+                      whileHover={{ scale: 1.06 }}
+                      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                      className="h-full min-h-[280px] w-full object-cover"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-[#111]">
+                      {c.vertical}
                     </div>
-                    <h3 className="mt-4 font-display text-2xl font-semibold leading-tight sm:text-3xl">{c.headline}</h3>
+                    <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-white">
+                      <span className="font-display text-lg font-semibold">{c.brand}</span>
+                      <ArrowUpRight className="h-5 w-5 transition group-hover:-translate-y-1 group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                  <div className="md:[direction:ltr]">
+                    <h3 className="font-display text-2xl font-semibold leading-tight sm:text-3xl">{c.headline}</h3>
                     <p className="mt-4 text-[#555]">{c.body}</p>
+                    <div className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-2xl bg-black/10">
+                      {c.stats.map((s) => (
+                        <div key={s.l} className="bg-white p-5">
+                          <div className="font-display text-2xl font-semibold sm:text-3xl">{s.v}</div>
+                          <div className="mt-2 text-[11px] uppercase tracking-widest text-[#666]">{s.l}</div>
+                        </div>
+                      ))}
+                    </div>
                     <a href="#contact" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#111] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#222]">
                       Get Results Like This <ArrowRight className="h-4 w-4" />
                     </a>
-                  </div>
-                  <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl bg-black/10">
-                    {c.stats.map((s) => (
-                      <div key={s.l} className="bg-white p-5">
-                        <div className="font-display text-2xl font-semibold sm:text-3xl">{s.v}</div>
-                        <div className="mt-2 text-[11px] uppercase tracking-widest text-[#666]">{s.l}</div>
-                      </div>
-                    ))}
                   </div>
                 </div>
               </Reveal>
@@ -1083,5 +1128,50 @@ function Field({
   );
 }
 
-/* unused icon import guard */
+/* Parallax marquee strip of logistics imagery */
+function ParallaxStrip() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const x1 = useTransform(scrollYProgress, [0, 1], ["0%", "-25%"]);
+  const x2 = useTransform(scrollYProgress, [0, 1], ["-25%", "0%"]);
+  const imgs = [
+    "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1568138084810-d471a36c0a26?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1605745341112-85968b19335b?auto=format&fit=crop&w=900&q=70",
+  ];
+  return (
+    <section ref={ref} className="relative overflow-hidden bg-[#0a0a0a] py-20">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-[#0a0a0a] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-[#0a0a0a] to-transparent" />
+      <div className="mb-10 text-center">
+        <p className="text-xs uppercase tracking-[0.3em] text-white/50">In Motion</p>
+        <h3 className="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl">
+          Moving freight across every channel
+        </h3>
+      </div>
+      <motion.div style={{ x: x1 }} className="flex gap-5 px-5">
+        {imgs.slice(0, 4).concat(imgs.slice(0, 4)).map((src, i) => (
+          <div key={`a${i}`} className="relative h-56 w-[28rem] shrink-0 overflow-hidden rounded-2xl">
+            <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-black/20" />
+          </div>
+        ))}
+      </motion.div>
+      <motion.div style={{ x: x2 }} className="mt-5 flex gap-5 px-5">
+        {imgs.slice(4).concat(imgs.slice(4)).map((src, i) => (
+          <div key={`b${i}`} className="relative h-56 w-[28rem] shrink-0 overflow-hidden rounded-2xl">
+            <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-black/20" />
+          </div>
+        ))}
+      </motion.div>
+    </section>
+  );
+}
+
 void LineChart;
