@@ -768,28 +768,41 @@ function Home() {
           </Reveal>
 
           <div className="mt-16 space-y-8">
-            {longCases.map((c) => (
+            {longCases.map((c, idx) => (
               <Reveal key={c.brand}>
-                <div className="group grid gap-10 rounded-3xl border border-black/10 bg-white p-8 transition hover:border-black/40 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.15)] md:grid-cols-[1.2fr_1fr] md:p-12">
-                  <div>
-                    <div className="flex items-center gap-3 text-xs uppercase tracking-[0.25em] text-[#666]">
-                      <span>{c.vertical}</span>
-                      <span className="h-1 w-1 rounded-full bg-black/30" />
-                      <span>{c.brand}</span>
+                <div className={`group grid gap-10 overflow-hidden rounded-3xl border border-black/10 bg-white p-8 transition hover:border-black/40 hover:shadow-[0_30px_60px_-20px_rgba(0,0,0,0.15)] md:grid-cols-[1fr_1.1fr] md:p-12 ${idx % 2 === 1 ? "md:[direction:rtl]" : ""}`}>
+                  <div className="relative overflow-hidden rounded-2xl md:[direction:ltr]">
+                    <motion.img
+                      src={c.image}
+                      alt={c.brand}
+                      loading="lazy"
+                      whileHover={{ scale: 1.06 }}
+                      transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                      className="h-full min-h-[280px] w-full object-cover"
+                    />
+                    <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
+                    <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full bg-white/95 px-3 py-1 text-[10px] font-medium uppercase tracking-widest text-[#111]">
+                      {c.vertical}
                     </div>
-                    <h3 className="mt-4 font-display text-2xl font-semibold leading-tight sm:text-3xl">{c.headline}</h3>
+                    <div className="absolute bottom-5 left-5 right-5 flex items-end justify-between text-white">
+                      <span className="font-display text-lg font-semibold">{c.brand}</span>
+                      <ArrowUpRight className="h-5 w-5 transition group-hover:-translate-y-1 group-hover:translate-x-1" />
+                    </div>
+                  </div>
+                  <div className="md:[direction:ltr]">
+                    <h3 className="font-display text-2xl font-semibold leading-tight sm:text-3xl">{c.headline}</h3>
                     <p className="mt-4 text-[#555]">{c.body}</p>
+                    <div className="mt-8 grid grid-cols-3 gap-px overflow-hidden rounded-2xl bg-black/10">
+                      {c.stats.map((s) => (
+                        <div key={s.l} className="bg-white p-5">
+                          <div className="font-display text-2xl font-semibold sm:text-3xl">{s.v}</div>
+                          <div className="mt-2 text-[11px] uppercase tracking-widest text-[#666]">{s.l}</div>
+                        </div>
+                      ))}
+                    </div>
                     <a href="#contact" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#111] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#222]">
                       Get Results Like This <ArrowRight className="h-4 w-4" />
                     </a>
-                  </div>
-                  <div className="grid grid-cols-3 gap-px overflow-hidden rounded-2xl bg-black/10">
-                    {c.stats.map((s) => (
-                      <div key={s.l} className="bg-white p-5">
-                        <div className="font-display text-2xl font-semibold sm:text-3xl">{s.v}</div>
-                        <div className="mt-2 text-[11px] uppercase tracking-widest text-[#666]">{s.l}</div>
-                      </div>
-                    ))}
                   </div>
                 </div>
               </Reveal>
