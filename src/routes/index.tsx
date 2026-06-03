@@ -197,6 +197,7 @@ const longCases = [
     brand: "GlobalFreight Solutions",
     headline: "312% increase in organic traffic in 8 months",
     body: "A mid-size freight forwarder struggling with zero online presence. We rebuilt their website, launched a targeted SEO campaign, and built lead capture funnels that generated 87 qualified leads per month.",
+    image: "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=1200&q=70",
     stats: [
       { v: "+312%", l: "Organic Traffic" },
       { v: "87", l: "Qualified Leads/Mo" },
@@ -208,6 +209,7 @@ const longCases = [
     brand: "MidWest Trucking Co.",
     headline: "From page 5 to #1 for 'trucking services' in their region",
     body: "A regional trucking company with an outdated website. We implemented local SEO, Google Business optimization, and a conversion-focused redesign that brought them to the top of search results.",
+    image: "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=1200&q=70",
     stats: [
       { v: "42 → #1", l: "Keyword Rankings" },
       { v: "120+", l: "Monthly Leads" },
@@ -219,6 +221,7 @@ const longCases = [
     brand: "ChainLink 3PL",
     headline: "2.5X conversion rate with new lead generation funnels",
     body: "A 3PL provider with plenty of traffic but poor conversion. We redesigned their funnel, added lead scoring, and implemented email nurture sequences that transformed their pipeline.",
+    image: "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=1200&q=70",
     stats: [
       { v: "2.5X", l: "Conversion Rate" },
       { v: "+85%", l: "Lead Quality Score" },
