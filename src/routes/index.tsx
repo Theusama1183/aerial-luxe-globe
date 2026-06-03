@@ -1128,5 +1128,50 @@ function Field({
   );
 }
 
-/* unused icon import guard */
+/* Parallax marquee strip of logistics imagery */
+function ParallaxStrip() {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const x1 = useTransform(scrollYProgress, [0, 1], ["0%", "-25%"]);
+  const x2 = useTransform(scrollYProgress, [0, 1], ["-25%", "0%"]);
+  const imgs = [
+    "https://images.unsplash.com/photo-1494412651409-8963ce7935a7?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1553413077-190dd305871c?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1578575437130-527eed3abbec?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1577412647305-991150c7d163?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1568138084810-d471a36c0a26?auto=format&fit=crop&w=900&q=70",
+    "https://images.unsplash.com/photo-1605745341112-85968b19335b?auto=format&fit=crop&w=900&q=70",
+  ];
+  return (
+    <section ref={ref} className="relative overflow-hidden bg-[#0a0a0a] py-20">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-32 bg-gradient-to-r from-[#0a0a0a] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-32 bg-gradient-to-l from-[#0a0a0a] to-transparent" />
+      <div className="mb-10 text-center">
+        <p className="text-xs uppercase tracking-[0.3em] text-white/50">In Motion</p>
+        <h3 className="mt-3 font-display text-3xl font-semibold text-white sm:text-4xl">
+          Moving freight across every channel
+        </h3>
+      </div>
+      <motion.div style={{ x: x1 }} className="flex gap-5 px-5">
+        {imgs.slice(0, 4).concat(imgs.slice(0, 4)).map((src, i) => (
+          <div key={`a${i}`} className="relative h-56 w-[28rem] shrink-0 overflow-hidden rounded-2xl">
+            <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-black/20" />
+          </div>
+        ))}
+      </motion.div>
+      <motion.div style={{ x: x2 }} className="mt-5 flex gap-5 px-5">
+        {imgs.slice(4).concat(imgs.slice(4)).map((src, i) => (
+          <div key={`b${i}`} className="relative h-56 w-[28rem] shrink-0 overflow-hidden rounded-2xl">
+            <img src={src} alt="" loading="lazy" className="h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-black/20" />
+          </div>
+        ))}
+      </motion.div>
+    </section>
+  );
+}
+
 void LineChart;
