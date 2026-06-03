@@ -283,8 +283,19 @@ const caseStudies = [
 /* -------------------- page -------------------- */
 
 function Home() {
+  const [videoOpen, setVideoOpen] = useState(false);
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: heroRef,
+    offset: ["start start", "end start"],
+  });
+  const heroY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
     <div className="bg-white text-[#111111]">
+      <VideoModal open={videoOpen} onClose={() => setVideoOpen(false)} />
+
       {/* announcement bar */}
       <div className="fixed top-0 left-0 right-0 z-[60] bg-[#111] text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-center gap-3 px-6 py-2 text-xs">
@@ -300,10 +311,13 @@ function Home() {
       <Nav />
 
       {/* ============ HERO ============ */}
-      <section className="section-dark relative min-h-screen overflow-hidden">
-        <HeroBackground />
-        <div className="relative z-10 mx-auto flex min-h-screen max-w-7xl items-center px-6 pt-32 pb-20">
-          <div className="max-w-3xl">
+      <section ref={heroRef} className="section-dark relative min-h-screen overflow-hidden">
+        <HeroVideoBackground />
+        <motion.div
+          style={{ y: heroY, opacity: heroOpacity }}
+          className="relative z-10 mx-auto grid min-h-screen max-w-7xl items-center gap-12 px-6 pt-32 pb-20 lg:grid-cols-[1.15fr_1fr]"
+        >
+          <div className="max-w-2xl">
             <Reveal>
               <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-1.5 text-xs uppercase tracking-[0.2em] text-white/70 backdrop-blur">
                 <span className="relative h-1.5 w-1.5 rounded-full bg-white pulse-ring" />
@@ -311,7 +325,7 @@ function Home() {
               </div>
             </Reveal>
             <Reveal delay={0.05}>
-              <h1 className="font-display text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[88px]">
+              <h1 className="font-display text-5xl font-semibold leading-[1.02] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-[80px]">
                 Digital Marketing for
                 <span className="block text-white/60">Supply Chain Companies</span>
               </h1>
@@ -328,10 +342,15 @@ function Home() {
                   Book Strategy Call
                   <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
                 </a>
-                <a href="#cases" className="group inline-flex items-center gap-2 rounded-full border border-white/25 px-7 py-3.5 text-sm font-medium text-white transition hover:border-white hover:bg-white/5">
-                  See Case Studies
-                  <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-1 group-hover:-translate-y-1" />
-                </a>
+                <button
+                  onClick={() => setVideoOpen(true)}
+                  className="group inline-flex items-center gap-3 rounded-full border border-white/25 px-5 py-3 text-sm font-medium text-white transition hover:border-white hover:bg-white/5"
+                >
+                  <span className="grid h-8 w-8 place-items-center rounded-full bg-white text-[#111]">
+                    <Play className="h-3.5 w-3.5 translate-x-px fill-current" />
+                  </span>
+                  Watch Showreel
+                </button>
               </div>
             </Reveal>
 
@@ -345,12 +364,17 @@ function Home() {
                   </div>
                   <span className="uppercase tracking-widest">4.9 client rating</span>
                 </div>
-                <span className="uppercase tracking-widest">Logistics industry specialists</span>
-                <span className="uppercase tracking-widest">Proven growth strategies</span>
+                <span className="uppercase tracking-widest">Logistics specialists</span>
+                <span className="uppercase tracking-widest">Proven growth</span>
               </div>
             </Reveal>
           </div>
-        </div>
+
+          {/* Right side: custom video preview card */}
+          <div className="relative">
+            <HeroVideoPreview onOpen={() => setVideoOpen(true)} />
+          </div>
+        </motion.div>
 
         {/* scroll cue */}
         <div className="absolute bottom-28 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-[10px] uppercase tracking-[0.3em] text-white/40 md:flex">
