@@ -2,9 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Nav } from "@/components/Nav";
 import { Reveal, Stagger } from "@/components/Reveal";
 import { PlanetScene } from "@/components/PlanetScene";
-import { HeroBackground } from "@/components/HeroBackground";
-import { motion } from "framer-motion";
-import { useState } from "react";
+import { HeroVideoBackground, HeroVideoPreview, VideoModal } from "@/components/HeroMedia";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
 import {
   ArrowRight,
   ArrowUpRight,
