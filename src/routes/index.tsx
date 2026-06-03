@@ -514,6 +514,11 @@ function Home() {
         </div>
       </section>
 
+      {/* ============ PARALLAX IMAGE STRIP ============ */}
+      <ParallaxStrip />
+
+
+
       {/* ============ METHODOLOGY + RESULTS ============ */}
       <section className="section-dark relative overflow-hidden py-28">
         <div className="absolute inset-0 grid-bg opacity-25" />
