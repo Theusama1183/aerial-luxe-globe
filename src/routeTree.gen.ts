@@ -9,8 +9,12 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TechIntegrationsRouteImport } from './routes/tech-integrations'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CaseStudiesRouteImport } from './routes/case-studies'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ServicesWebsiteRedesignRouteImport } from './routes/services.website-redesign'
 import { Route as ServicesSeoGeoAioRouteImport } from './routes/services.seo-geo-aio'
@@ -21,6 +25,11 @@ import { Route as IndustriesFreightForwardersRouteImport } from './routes/indust
 import { Route as IndustriesFreightBrokersRouteImport } from './routes/industries.freight-brokers'
 import { Route as Industries3plWarehousingRouteImport } from './routes/industries.3pl-warehousing'
 
+const TechIntegrationsRoute = TechIntegrationsRouteImport.update({
+  id: '/tech-integrations',
+  path: '/tech-integrations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
@@ -29,6 +38,21 @@ const ServicesRoute = ServicesRouteImport.update({
 const IndustriesRoute = IndustriesRouteImport.update({
   id: '/industries',
   path: '/industries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaseStudiesRoute = CaseStudiesRouteImport.update({
+  id: '/case-studies',
+  path: '/case-studies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -83,8 +107,12 @@ const Industries3plWarehousingRoute =
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRouteWithChildren
   '/services': typeof ServicesRouteWithChildren
+  '/tech-integrations': typeof TechIntegrationsRoute
   '/industries/3pl-warehousing': typeof Industries3plWarehousingRoute
   '/industries/freight-brokers': typeof IndustriesFreightBrokersRoute
   '/industries/freight-forwarders': typeof IndustriesFreightForwardersRoute
@@ -96,8 +124,12 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRouteWithChildren
   '/services': typeof ServicesRouteWithChildren
+  '/tech-integrations': typeof TechIntegrationsRoute
   '/industries/3pl-warehousing': typeof Industries3plWarehousingRoute
   '/industries/freight-brokers': typeof IndustriesFreightBrokersRoute
   '/industries/freight-forwarders': typeof IndustriesFreightForwardersRoute
@@ -110,8 +142,12 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRouteWithChildren
   '/services': typeof ServicesRouteWithChildren
+  '/tech-integrations': typeof TechIntegrationsRoute
   '/industries/3pl-warehousing': typeof Industries3plWarehousingRoute
   '/industries/freight-brokers': typeof IndustriesFreightBrokersRoute
   '/industries/freight-forwarders': typeof IndustriesFreightForwardersRoute
@@ -125,8 +161,12 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/blog'
+    | '/case-studies'
+    | '/contact'
     | '/industries'
     | '/services'
+    | '/tech-integrations'
     | '/industries/3pl-warehousing'
     | '/industries/freight-brokers'
     | '/industries/freight-forwarders'
@@ -138,8 +178,12 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/blog'
+    | '/case-studies'
+    | '/contact'
     | '/industries'
     | '/services'
+    | '/tech-integrations'
     | '/industries/3pl-warehousing'
     | '/industries/freight-brokers'
     | '/industries/freight-forwarders'
@@ -151,8 +195,12 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/blog'
+    | '/case-studies'
+    | '/contact'
     | '/industries'
     | '/services'
+    | '/tech-integrations'
     | '/industries/3pl-warehousing'
     | '/industries/freight-brokers'
     | '/industries/freight-forwarders'
@@ -165,12 +213,23 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogRoute: typeof BlogRoute
+  CaseStudiesRoute: typeof CaseStudiesRoute
+  ContactRoute: typeof ContactRoute
   IndustriesRoute: typeof IndustriesRouteWithChildren
   ServicesRoute: typeof ServicesRouteWithChildren
+  TechIntegrationsRoute: typeof TechIntegrationsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tech-integrations': {
+      id: '/tech-integrations'
+      path: '/tech-integrations'
+      fullPath: '/tech-integrations'
+      preLoaderRoute: typeof TechIntegrationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/services': {
       id: '/services'
       path: '/services'
@@ -183,6 +242,27 @@ declare module '@tanstack/react-router' {
       path: '/industries'
       fullPath: '/industries'
       preLoaderRoute: typeof IndustriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/case-studies': {
+      id: '/case-studies'
+      path: '/case-studies'
+      fullPath: '/case-studies'
+      preLoaderRoute: typeof CaseStudiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -289,8 +369,12 @@ const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogRoute: BlogRoute,
+  CaseStudiesRoute: CaseStudiesRoute,
+  ContactRoute: ContactRoute,
   IndustriesRoute: IndustriesRouteWithChildren,
   ServicesRoute: ServicesRouteWithChildren,
+  TechIntegrationsRoute: TechIntegrationsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
