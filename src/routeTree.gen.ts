@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TechIntegrationsRouteImport } from './routes/tech-integrations'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ServicesRouteImport } from './routes/services'
 import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as IndustriesRouteImport } from './routes/industries'
@@ -30,6 +31,11 @@ import { Route as Industries3plWarehousingRouteImport } from './routes/industrie
 const TechIntegrationsRoute = TechIntegrationsRouteImport.update({
   id: '/tech-integrations',
   path: '/tech-integrations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ServicesRoute = ServicesRouteImport.update({
@@ -125,6 +131,7 @@ export interface FileRoutesByFullPath {
   '/industries': typeof IndustriesRouteWithChildren
   '/locations': typeof LocationsRouteWithChildren
   '/services': typeof ServicesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tech-integrations': typeof TechIntegrationsRoute
   '/industries/3pl-warehousing': typeof Industries3plWarehousingRoute
   '/industries/freight-brokers': typeof IndustriesFreightBrokersRoute
@@ -144,6 +151,7 @@ export interface FileRoutesByTo {
   '/industries': typeof IndustriesRouteWithChildren
   '/locations': typeof LocationsRouteWithChildren
   '/services': typeof ServicesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tech-integrations': typeof TechIntegrationsRoute
   '/industries/3pl-warehousing': typeof Industries3plWarehousingRoute
   '/industries/freight-brokers': typeof IndustriesFreightBrokersRoute
@@ -164,6 +172,7 @@ export interface FileRoutesById {
   '/industries': typeof IndustriesRouteWithChildren
   '/locations': typeof LocationsRouteWithChildren
   '/services': typeof ServicesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/tech-integrations': typeof TechIntegrationsRoute
   '/industries/3pl-warehousing': typeof Industries3plWarehousingRoute
   '/industries/freight-brokers': typeof IndustriesFreightBrokersRoute
@@ -185,6 +194,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/locations'
     | '/services'
+    | '/sitemap.xml'
     | '/tech-integrations'
     | '/industries/3pl-warehousing'
     | '/industries/freight-brokers'
@@ -204,6 +214,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/locations'
     | '/services'
+    | '/sitemap.xml'
     | '/tech-integrations'
     | '/industries/3pl-warehousing'
     | '/industries/freight-brokers'
@@ -223,6 +234,7 @@ export interface FileRouteTypes {
     | '/industries'
     | '/locations'
     | '/services'
+    | '/sitemap.xml'
     | '/tech-integrations'
     | '/industries/3pl-warehousing'
     | '/industries/freight-brokers'
@@ -243,6 +255,7 @@ export interface RootRouteChildren {
   IndustriesRoute: typeof IndustriesRouteWithChildren
   LocationsRoute: typeof LocationsRouteWithChildren
   ServicesRoute: typeof ServicesRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   TechIntegrationsRoute: typeof TechIntegrationsRoute
 }
 
@@ -253,6 +266,13 @@ declare module '@tanstack/react-router' {
       path: '/tech-integrations'
       fullPath: '/tech-integrations'
       preLoaderRoute: typeof TechIntegrationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/services': {
@@ -426,6 +446,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndustriesRoute: IndustriesRouteWithChildren,
   LocationsRoute: LocationsRouteWithChildren,
   ServicesRoute: ServicesRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   TechIntegrationsRoute: TechIntegrationsRoute,
 }
 export const routeTree = rootRouteImport

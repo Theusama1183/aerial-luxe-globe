@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer";
 import { CTABand, PageShell } from "@/components/PageShell";
 import { Reveal, Stagger } from "@/components/Reveal";
 import { CITIES, getCity } from "@/data/cities";
-import { ArrowRight, MapPin, Anchor, Warehouse, Truck, Ship } from "lucide-react";
+import { ArrowRight, MapPin, Anchor, Warehouse, Truck, Ship, Building2 } from "lucide-react";
 
 export const Route = createFileRoute("/locations/$city")({
   loader: ({ params }) => {
@@ -102,7 +102,7 @@ function CityPage() {
         <div className="mx-auto max-w-6xl px-6">
           <p className="text-center text-xs uppercase tracking-widest text-black/50">Trade lanes & local realities</p>
           <div className="mt-8 grid gap-4 md:grid-cols-3">
-            {city.trade.map((t) => (
+            {city.trade.map((t: string) => (
               <div key={t} className="rounded-2xl border border-black/10 bg-white p-6 text-center">
                 <Anchor className="mx-auto h-5 w-5 text-[#111]" />
                 <div className="mt-3 font-medium">{t}</div>
@@ -141,7 +141,7 @@ function CityPage() {
         <div className="mx-auto max-w-5xl px-6">
           <h2 className="font-display text-3xl font-semibold tracking-tight md:text-4xl">High-intent keywords we target for {city.name}</h2>
           <div className="mt-8 flex flex-wrap gap-3">
-            {city.keywords.map((k) => (
+            {city.keywords.map((k: string) => (
               <span key={k} className="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm">{k}</span>
             ))}
           </div>

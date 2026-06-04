@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aerial-luxe-globe.lovable.app/sitemap.xml
