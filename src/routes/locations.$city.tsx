@@ -167,6 +167,3 @@ function CityPage() {
     </PageShell>
   );
 }
-
-// Lazy import for the Building2 icon used above
-import { Building2 } from "lucide-react";
