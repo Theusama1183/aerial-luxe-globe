@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as TechIntegrationsRouteImport } from './routes/tech-integrations'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as LocationsRouteImport } from './routes/locations'
 import { Route as IndustriesRouteImport } from './routes/industries'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CaseStudiesRouteImport } from './routes/case-studies'
@@ -20,6 +21,7 @@ import { Route as ServicesWebsiteRedesignRouteImport } from './routes/services.w
 import { Route as ServicesSeoGeoAioRouteImport } from './routes/services.seo-geo-aio'
 import { Route as ServicesPpcAdsRouteImport } from './routes/services.ppc-ads'
 import { Route as ServicesLeadGenerationRouteImport } from './routes/services.lead-generation'
+import { Route as LocationsCityRouteImport } from './routes/locations.$city'
 import { Route as IndustriesTruckingFleetsRouteImport } from './routes/industries.trucking-fleets'
 import { Route as IndustriesFreightForwardersRouteImport } from './routes/industries.freight-forwarders'
 import { Route as IndustriesFreightBrokersRouteImport } from './routes/industries.freight-brokers'
@@ -33,6 +35,11 @@ const TechIntegrationsRoute = TechIntegrationsRouteImport.update({
 const ServicesRoute = ServicesRouteImport.update({
   id: '/services',
   path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsRoute = LocationsRouteImport.update({
+  id: '/locations',
+  path: '/locations',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndustriesRoute = IndustriesRouteImport.update({
@@ -80,6 +87,11 @@ const ServicesLeadGenerationRoute = ServicesLeadGenerationRouteImport.update({
   path: '/lead-generation',
   getParentRoute: () => ServicesRoute,
 } as any)
+const LocationsCityRoute = LocationsCityRouteImport.update({
+  id: '/$city',
+  path: '/$city',
+  getParentRoute: () => LocationsRoute,
+} as any)
 const IndustriesTruckingFleetsRoute =
   IndustriesTruckingFleetsRouteImport.update({
     id: '/trucking-fleets',
@@ -111,12 +123,14 @@ export interface FileRoutesByFullPath {
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRouteWithChildren
+  '/locations': typeof LocationsRouteWithChildren
   '/services': typeof ServicesRouteWithChildren
   '/tech-integrations': typeof TechIntegrationsRoute
   '/industries/3pl-warehousing': typeof Industries3plWarehousingRoute
   '/industries/freight-brokers': typeof IndustriesFreightBrokersRoute
   '/industries/freight-forwarders': typeof IndustriesFreightForwardersRoute
   '/industries/trucking-fleets': typeof IndustriesTruckingFleetsRoute
+  '/locations/$city': typeof LocationsCityRoute
   '/services/lead-generation': typeof ServicesLeadGenerationRoute
   '/services/ppc-ads': typeof ServicesPpcAdsRoute
   '/services/seo-geo-aio': typeof ServicesSeoGeoAioRoute
@@ -128,12 +142,14 @@ export interface FileRoutesByTo {
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRouteWithChildren
+  '/locations': typeof LocationsRouteWithChildren
   '/services': typeof ServicesRouteWithChildren
   '/tech-integrations': typeof TechIntegrationsRoute
   '/industries/3pl-warehousing': typeof Industries3plWarehousingRoute
   '/industries/freight-brokers': typeof IndustriesFreightBrokersRoute
   '/industries/freight-forwarders': typeof IndustriesFreightForwardersRoute
   '/industries/trucking-fleets': typeof IndustriesTruckingFleetsRoute
+  '/locations/$city': typeof LocationsCityRoute
   '/services/lead-generation': typeof ServicesLeadGenerationRoute
   '/services/ppc-ads': typeof ServicesPpcAdsRoute
   '/services/seo-geo-aio': typeof ServicesSeoGeoAioRoute
@@ -146,12 +162,14 @@ export interface FileRoutesById {
   '/case-studies': typeof CaseStudiesRoute
   '/contact': typeof ContactRoute
   '/industries': typeof IndustriesRouteWithChildren
+  '/locations': typeof LocationsRouteWithChildren
   '/services': typeof ServicesRouteWithChildren
   '/tech-integrations': typeof TechIntegrationsRoute
   '/industries/3pl-warehousing': typeof Industries3plWarehousingRoute
   '/industries/freight-brokers': typeof IndustriesFreightBrokersRoute
   '/industries/freight-forwarders': typeof IndustriesFreightForwardersRoute
   '/industries/trucking-fleets': typeof IndustriesTruckingFleetsRoute
+  '/locations/$city': typeof LocationsCityRoute
   '/services/lead-generation': typeof ServicesLeadGenerationRoute
   '/services/ppc-ads': typeof ServicesPpcAdsRoute
   '/services/seo-geo-aio': typeof ServicesSeoGeoAioRoute
@@ -165,12 +183,14 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/industries'
+    | '/locations'
     | '/services'
     | '/tech-integrations'
     | '/industries/3pl-warehousing'
     | '/industries/freight-brokers'
     | '/industries/freight-forwarders'
     | '/industries/trucking-fleets'
+    | '/locations/$city'
     | '/services/lead-generation'
     | '/services/ppc-ads'
     | '/services/seo-geo-aio'
@@ -182,12 +202,14 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/industries'
+    | '/locations'
     | '/services'
     | '/tech-integrations'
     | '/industries/3pl-warehousing'
     | '/industries/freight-brokers'
     | '/industries/freight-forwarders'
     | '/industries/trucking-fleets'
+    | '/locations/$city'
     | '/services/lead-generation'
     | '/services/ppc-ads'
     | '/services/seo-geo-aio'
@@ -199,12 +221,14 @@ export interface FileRouteTypes {
     | '/case-studies'
     | '/contact'
     | '/industries'
+    | '/locations'
     | '/services'
     | '/tech-integrations'
     | '/industries/3pl-warehousing'
     | '/industries/freight-brokers'
     | '/industries/freight-forwarders'
     | '/industries/trucking-fleets'
+    | '/locations/$city'
     | '/services/lead-generation'
     | '/services/ppc-ads'
     | '/services/seo-geo-aio'
@@ -217,6 +241,7 @@ export interface RootRouteChildren {
   CaseStudiesRoute: typeof CaseStudiesRoute
   ContactRoute: typeof ContactRoute
   IndustriesRoute: typeof IndustriesRouteWithChildren
+  LocationsRoute: typeof LocationsRouteWithChildren
   ServicesRoute: typeof ServicesRouteWithChildren
   TechIntegrationsRoute: typeof TechIntegrationsRoute
 }
@@ -235,6 +260,13 @@ declare module '@tanstack/react-router' {
       path: '/services'
       fullPath: '/services'
       preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations': {
+      id: '/locations'
+      path: '/locations'
+      fullPath: '/locations'
+      preLoaderRoute: typeof LocationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/industries': {
@@ -300,6 +332,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesLeadGenerationRouteImport
       parentRoute: typeof ServicesRoute
     }
+    '/locations/$city': {
+      id: '/locations/$city'
+      path: '/$city'
+      fullPath: '/locations/$city'
+      preLoaderRoute: typeof LocationsCityRouteImport
+      parentRoute: typeof LocationsRoute
+    }
     '/industries/trucking-fleets': {
       id: '/industries/trucking-fleets'
       path: '/trucking-fleets'
@@ -349,6 +388,18 @@ const IndustriesRouteWithChildren = IndustriesRoute._addFileChildren(
   IndustriesRouteChildren,
 )
 
+interface LocationsRouteChildren {
+  LocationsCityRoute: typeof LocationsCityRoute
+}
+
+const LocationsRouteChildren: LocationsRouteChildren = {
+  LocationsCityRoute: LocationsCityRoute,
+}
+
+const LocationsRouteWithChildren = LocationsRoute._addFileChildren(
+  LocationsRouteChildren,
+)
+
 interface ServicesRouteChildren {
   ServicesLeadGenerationRoute: typeof ServicesLeadGenerationRoute
   ServicesPpcAdsRoute: typeof ServicesPpcAdsRoute
@@ -373,6 +424,7 @@ const rootRouteChildren: RootRouteChildren = {
   CaseStudiesRoute: CaseStudiesRoute,
   ContactRoute: ContactRoute,
   IndustriesRoute: IndustriesRouteWithChildren,
+  LocationsRoute: LocationsRouteWithChildren,
   ServicesRoute: ServicesRouteWithChildren,
   TechIntegrationsRoute: TechIntegrationsRoute,
 }
