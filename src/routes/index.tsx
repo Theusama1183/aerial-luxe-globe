@@ -977,7 +977,7 @@ function Home() {
               ))}
             </ul>
             <div className="mt-10 flex items-center gap-3 text-xs text-white/50">
-              <Mail className="h-4 w-4" /> hello@logiframe.com
+              <Mail className="h-4 w-4" /><span>hello@logiframe.com</span>
             </div>
           </Reveal>
 

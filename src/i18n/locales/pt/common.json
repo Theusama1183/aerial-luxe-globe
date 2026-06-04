@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "services": "Serviços",
+    "industries": "Indústrias",
+    "locations": "Localizações",
+    "cases": "Casos",
+    "tech": "Integrações",
+    "blog": "Insights",
+    "contact": "Contacto",
+    "cta": "Mais Leads de Carga"
+  },
+  "hero": {
+    "eyebrow": "Especialistas em Marketing de Logística",
+    "title": "Agência de Marketing Digital para Logística e Supply Chain",
+    "subtitle": "Ajudamos brokers, 3PL, transportadoras e transitários a gerar leads B2B consistentes com websites modernos, SEO da era IA (GEO/AIO) e PPC de alta intenção.",
+    "primaryCta": "Agendar Chamada Estratégica",
+    "secondaryCta": "Ver Casos"
+  },
+  "footer": {
+    "tagline": "A agência de marketing digital exclusiva para logística, transitários, transporte, 3PL e supply chain.",
+    "rights": "Todos os direitos reservados."
+  }
+}

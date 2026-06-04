@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "services": "Servizi",
+    "industries": "Settori",
+    "locations": "Sedi",
+    "cases": "Case Study",
+    "tech": "Integrazioni",
+    "blog": "Insights",
+    "contact": "Contatti",
+    "cta": "Più Lead di Carico"
+  },
+  "hero": {
+    "eyebrow": "Specialisti di Marketing Logistico",
+    "title": "Agenzia di Marketing Digitale per Logistica e Supply Chain",
+    "subtitle": "Aiutiamo broker, 3PL, aziende di trasporto e spedizionieri a generare lead B2B costanti con siti moderni, SEO dell'era AI (GEO/AIO) e PPC ad alta intenzione.",
+    "primaryCta": "Prenota una Call Strategica",
+    "secondaryCta": "Vedi i Case Study"
+  },
+  "footer": {
+    "tagline": "L'agenzia di marketing digitale esclusiva per logistica, spedizioni, trasporto, 3PL e supply chain.",
+    "rights": "Tutti i diritti riservati."
+  }
+}

@@ -9,38 +9,314 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TechIntegrationsRouteImport } from './routes/tech-integrations'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as ServicesRouteImport } from './routes/services'
+import { Route as LocationsRouteImport } from './routes/locations'
+import { Route as IndustriesRouteImport } from './routes/industries'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as CaseStudiesRouteImport } from './routes/case-studies'
+import { Route as BlogRouteImport } from './routes/blog'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ServicesWebsiteRedesignRouteImport } from './routes/services.website-redesign'
+import { Route as ServicesSeoGeoAioRouteImport } from './routes/services.seo-geo-aio'
+import { Route as ServicesPpcAdsRouteImport } from './routes/services.ppc-ads'
+import { Route as ServicesLeadGenerationRouteImport } from './routes/services.lead-generation'
+import { Route as LocationsCityRouteImport } from './routes/locations.$city'
+import { Route as IndustriesTruckingFleetsRouteImport } from './routes/industries.trucking-fleets'
+import { Route as IndustriesFreightForwardersRouteImport } from './routes/industries.freight-forwarders'
+import { Route as IndustriesFreightBrokersRouteImport } from './routes/industries.freight-brokers'
+import { Route as Industries3plWarehousingRouteImport } from './routes/industries.3pl-warehousing'
 
+const TechIntegrationsRoute = TechIntegrationsRouteImport.update({
+  id: '/tech-integrations',
+  path: '/tech-integrations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LocationsRoute = LocationsRouteImport.update({
+  id: '/locations',
+  path: '/locations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndustriesRoute = IndustriesRouteImport.update({
+  id: '/industries',
+  path: '/industries',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CaseStudiesRoute = CaseStudiesRouteImport.update({
+  id: '/case-studies',
+  path: '/case-studies',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogRoute = BlogRouteImport.update({
+  id: '/blog',
+  path: '/blog',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ServicesWebsiteRedesignRoute = ServicesWebsiteRedesignRouteImport.update({
+  id: '/website-redesign',
+  path: '/website-redesign',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesSeoGeoAioRoute = ServicesSeoGeoAioRouteImport.update({
+  id: '/seo-geo-aio',
+  path: '/seo-geo-aio',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesPpcAdsRoute = ServicesPpcAdsRouteImport.update({
+  id: '/ppc-ads',
+  path: '/ppc-ads',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const ServicesLeadGenerationRoute = ServicesLeadGenerationRouteImport.update({
+  id: '/lead-generation',
+  path: '/lead-generation',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const LocationsCityRoute = LocationsCityRouteImport.update({
+  id: '/$city',
+  path: '/$city',
+  getParentRoute: () => LocationsRoute,
+} as any)
+const IndustriesTruckingFleetsRoute =
+  IndustriesTruckingFleetsRouteImport.update({
+    id: '/trucking-fleets',
+    path: '/trucking-fleets',
+    getParentRoute: () => IndustriesRoute,
+  } as any)
+const IndustriesFreightForwardersRoute =
+  IndustriesFreightForwardersRouteImport.update({
+    id: '/freight-forwarders',
+    path: '/freight-forwarders',
+    getParentRoute: () => IndustriesRoute,
+  } as any)
+const IndustriesFreightBrokersRoute =
+  IndustriesFreightBrokersRouteImport.update({
+    id: '/freight-brokers',
+    path: '/freight-brokers',
+    getParentRoute: () => IndustriesRoute,
+  } as any)
+const Industries3plWarehousingRoute =
+  Industries3plWarehousingRouteImport.update({
+    id: '/3pl-warehousing',
+    path: '/3pl-warehousing',
+    getParentRoute: () => IndustriesRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
+  '/industries': typeof IndustriesRouteWithChildren
+  '/locations': typeof LocationsRouteWithChildren
+  '/services': typeof ServicesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tech-integrations': typeof TechIntegrationsRoute
+  '/industries/3pl-warehousing': typeof Industries3plWarehousingRoute
+  '/industries/freight-brokers': typeof IndustriesFreightBrokersRoute
+  '/industries/freight-forwarders': typeof IndustriesFreightForwardersRoute
+  '/industries/trucking-fleets': typeof IndustriesTruckingFleetsRoute
+  '/locations/$city': typeof LocationsCityRoute
+  '/services/lead-generation': typeof ServicesLeadGenerationRoute
+  '/services/ppc-ads': typeof ServicesPpcAdsRoute
+  '/services/seo-geo-aio': typeof ServicesSeoGeoAioRoute
+  '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
+  '/industries': typeof IndustriesRouteWithChildren
+  '/locations': typeof LocationsRouteWithChildren
+  '/services': typeof ServicesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tech-integrations': typeof TechIntegrationsRoute
+  '/industries/3pl-warehousing': typeof Industries3plWarehousingRoute
+  '/industries/freight-brokers': typeof IndustriesFreightBrokersRoute
+  '/industries/freight-forwarders': typeof IndustriesFreightForwardersRoute
+  '/industries/trucking-fleets': typeof IndustriesTruckingFleetsRoute
+  '/locations/$city': typeof LocationsCityRoute
+  '/services/lead-generation': typeof ServicesLeadGenerationRoute
+  '/services/ppc-ads': typeof ServicesPpcAdsRoute
+  '/services/seo-geo-aio': typeof ServicesSeoGeoAioRoute
+  '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/blog': typeof BlogRoute
+  '/case-studies': typeof CaseStudiesRoute
+  '/contact': typeof ContactRoute
+  '/industries': typeof IndustriesRouteWithChildren
+  '/locations': typeof LocationsRouteWithChildren
+  '/services': typeof ServicesRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
+  '/tech-integrations': typeof TechIntegrationsRoute
+  '/industries/3pl-warehousing': typeof Industries3plWarehousingRoute
+  '/industries/freight-brokers': typeof IndustriesFreightBrokersRoute
+  '/industries/freight-forwarders': typeof IndustriesFreightForwardersRoute
+  '/industries/trucking-fleets': typeof IndustriesTruckingFleetsRoute
+  '/locations/$city': typeof LocationsCityRoute
+  '/services/lead-generation': typeof ServicesLeadGenerationRoute
+  '/services/ppc-ads': typeof ServicesPpcAdsRoute
+  '/services/seo-geo-aio': typeof ServicesSeoGeoAioRoute
+  '/services/website-redesign': typeof ServicesWebsiteRedesignRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/blog'
+    | '/case-studies'
+    | '/contact'
+    | '/industries'
+    | '/locations'
+    | '/services'
+    | '/sitemap.xml'
+    | '/tech-integrations'
+    | '/industries/3pl-warehousing'
+    | '/industries/freight-brokers'
+    | '/industries/freight-forwarders'
+    | '/industries/trucking-fleets'
+    | '/locations/$city'
+    | '/services/lead-generation'
+    | '/services/ppc-ads'
+    | '/services/seo-geo-aio'
+    | '/services/website-redesign'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/blog'
+    | '/case-studies'
+    | '/contact'
+    | '/industries'
+    | '/locations'
+    | '/services'
+    | '/sitemap.xml'
+    | '/tech-integrations'
+    | '/industries/3pl-warehousing'
+    | '/industries/freight-brokers'
+    | '/industries/freight-forwarders'
+    | '/industries/trucking-fleets'
+    | '/locations/$city'
+    | '/services/lead-generation'
+    | '/services/ppc-ads'
+    | '/services/seo-geo-aio'
+    | '/services/website-redesign'
+  id:
+    | '__root__'
+    | '/'
+    | '/blog'
+    | '/case-studies'
+    | '/contact'
+    | '/industries'
+    | '/locations'
+    | '/services'
+    | '/sitemap.xml'
+    | '/tech-integrations'
+    | '/industries/3pl-warehousing'
+    | '/industries/freight-brokers'
+    | '/industries/freight-forwarders'
+    | '/industries/trucking-fleets'
+    | '/locations/$city'
+    | '/services/lead-generation'
+    | '/services/ppc-ads'
+    | '/services/seo-geo-aio'
+    | '/services/website-redesign'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  BlogRoute: typeof BlogRoute
+  CaseStudiesRoute: typeof CaseStudiesRoute
+  ContactRoute: typeof ContactRoute
+  IndustriesRoute: typeof IndustriesRouteWithChildren
+  LocationsRoute: typeof LocationsRouteWithChildren
+  ServicesRoute: typeof ServicesRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
+  TechIntegrationsRoute: typeof TechIntegrationsRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/tech-integrations': {
+      id: '/tech-integrations'
+      path: '/tech-integrations'
+      fullPath: '/tech-integrations'
+      preLoaderRoute: typeof TechIntegrationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/locations': {
+      id: '/locations'
+      path: '/locations'
+      fullPath: '/locations'
+      preLoaderRoute: typeof LocationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/industries': {
+      id: '/industries'
+      path: '/industries'
+      fullPath: '/industries'
+      preLoaderRoute: typeof IndustriesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/case-studies': {
+      id: '/case-studies'
+      path: '/case-studies'
+      fullPath: '/case-studies'
+      preLoaderRoute: typeof CaseStudiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog': {
+      id: '/blog'
+      path: '/blog'
+      fullPath: '/blog'
+      preLoaderRoute: typeof BlogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +324,131 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/services/website-redesign': {
+      id: '/services/website-redesign'
+      path: '/website-redesign'
+      fullPath: '/services/website-redesign'
+      preLoaderRoute: typeof ServicesWebsiteRedesignRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/seo-geo-aio': {
+      id: '/services/seo-geo-aio'
+      path: '/seo-geo-aio'
+      fullPath: '/services/seo-geo-aio'
+      preLoaderRoute: typeof ServicesSeoGeoAioRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/ppc-ads': {
+      id: '/services/ppc-ads'
+      path: '/ppc-ads'
+      fullPath: '/services/ppc-ads'
+      preLoaderRoute: typeof ServicesPpcAdsRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/services/lead-generation': {
+      id: '/services/lead-generation'
+      path: '/lead-generation'
+      fullPath: '/services/lead-generation'
+      preLoaderRoute: typeof ServicesLeadGenerationRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/locations/$city': {
+      id: '/locations/$city'
+      path: '/$city'
+      fullPath: '/locations/$city'
+      preLoaderRoute: typeof LocationsCityRouteImport
+      parentRoute: typeof LocationsRoute
+    }
+    '/industries/trucking-fleets': {
+      id: '/industries/trucking-fleets'
+      path: '/trucking-fleets'
+      fullPath: '/industries/trucking-fleets'
+      preLoaderRoute: typeof IndustriesTruckingFleetsRouteImport
+      parentRoute: typeof IndustriesRoute
+    }
+    '/industries/freight-forwarders': {
+      id: '/industries/freight-forwarders'
+      path: '/freight-forwarders'
+      fullPath: '/industries/freight-forwarders'
+      preLoaderRoute: typeof IndustriesFreightForwardersRouteImport
+      parentRoute: typeof IndustriesRoute
+    }
+    '/industries/freight-brokers': {
+      id: '/industries/freight-brokers'
+      path: '/freight-brokers'
+      fullPath: '/industries/freight-brokers'
+      preLoaderRoute: typeof IndustriesFreightBrokersRouteImport
+      parentRoute: typeof IndustriesRoute
+    }
+    '/industries/3pl-warehousing': {
+      id: '/industries/3pl-warehousing'
+      path: '/3pl-warehousing'
+      fullPath: '/industries/3pl-warehousing'
+      preLoaderRoute: typeof Industries3plWarehousingRouteImport
+      parentRoute: typeof IndustriesRoute
+    }
   }
 }
 
+interface IndustriesRouteChildren {
+  Industries3plWarehousingRoute: typeof Industries3plWarehousingRoute
+  IndustriesFreightBrokersRoute: typeof IndustriesFreightBrokersRoute
+  IndustriesFreightForwardersRoute: typeof IndustriesFreightForwardersRoute
+  IndustriesTruckingFleetsRoute: typeof IndustriesTruckingFleetsRoute
+}
+
+const IndustriesRouteChildren: IndustriesRouteChildren = {
+  Industries3plWarehousingRoute: Industries3plWarehousingRoute,
+  IndustriesFreightBrokersRoute: IndustriesFreightBrokersRoute,
+  IndustriesFreightForwardersRoute: IndustriesFreightForwardersRoute,
+  IndustriesTruckingFleetsRoute: IndustriesTruckingFleetsRoute,
+}
+
+const IndustriesRouteWithChildren = IndustriesRoute._addFileChildren(
+  IndustriesRouteChildren,
+)
+
+interface LocationsRouteChildren {
+  LocationsCityRoute: typeof LocationsCityRoute
+}
+
+const LocationsRouteChildren: LocationsRouteChildren = {
+  LocationsCityRoute: LocationsCityRoute,
+}
+
+const LocationsRouteWithChildren = LocationsRoute._addFileChildren(
+  LocationsRouteChildren,
+)
+
+interface ServicesRouteChildren {
+  ServicesLeadGenerationRoute: typeof ServicesLeadGenerationRoute
+  ServicesPpcAdsRoute: typeof ServicesPpcAdsRoute
+  ServicesSeoGeoAioRoute: typeof ServicesSeoGeoAioRoute
+  ServicesWebsiteRedesignRoute: typeof ServicesWebsiteRedesignRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesLeadGenerationRoute: ServicesLeadGenerationRoute,
+  ServicesPpcAdsRoute: ServicesPpcAdsRoute,
+  ServicesSeoGeoAioRoute: ServicesSeoGeoAioRoute,
+  ServicesWebsiteRedesignRoute: ServicesWebsiteRedesignRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  BlogRoute: BlogRoute,
+  CaseStudiesRoute: CaseStudiesRoute,
+  ContactRoute: ContactRoute,
+  IndustriesRoute: IndustriesRouteWithChildren,
+  LocationsRoute: LocationsRouteWithChildren,
+  ServicesRoute: ServicesRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
+  TechIntegrationsRoute: TechIntegrationsRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}

@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "services": "Services",
+    "industries": "Secteurs",
+    "locations": "Localisations",
+    "cases": "Études de Cas",
+    "tech": "Intégrations",
+    "blog": "Insights",
+    "contact": "Contact",
+    "cta": "Plus de Leads Fret"
+  },
+  "hero": {
+    "eyebrow": "Spécialistes du Marketing Logistique",
+    "title": "Agence de Marketing Digital pour la Logistique et la Supply Chain",
+    "subtitle": "Nous aidons les commissionnaires, 3PL, transporteurs et transitaires à générer des leads B2B réguliers grâce à des sites modernes, du SEO ère IA (GEO/AIO) et du PPC à forte intention.",
+    "primaryCta": "Réserver un Appel Stratégique",
+    "secondaryCta": "Voir les Études de Cas"
+  },
+  "footer": {
+    "tagline": "L'agence de marketing digital exclusivement dédiée à la logistique, au transit, au transport, au 3PL et à la supply chain.",
+    "rights": "Tous droits réservés."
+  }
+}
