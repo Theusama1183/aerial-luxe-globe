@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "services": "Diensten",
+    "industries": "Sectoren",
+    "locations": "Locaties",
+    "cases": "Cases",
+    "tech": "Tech-integraties",
+    "blog": "Inzichten",
+    "contact": "Contact",
+    "cta": "Meer Vrachtleads Krijgen"
+  },
+  "hero": {
+    "eyebrow": "Specialisten in Logistieke Marketing",
+    "title": "Digitaal Marketingbureau voor Logistiek & Supply Chain",
+    "subtitle": "We helpen expediteurs, 3PL's, transportbedrijven en freight forwarders aan een constante stroom B2B-leads via moderne websites, AI-tijdperk SEO (GEO/AIO) en gerichte PPC.",
+    "primaryCta": "Plan een Strategiegesprek",
+    "secondaryCta": "Bekijk Cases"
+  },
+  "footer": {
+    "tagline": "Het digitale marketingbureau exclusief voor logistiek, expeditie, transport, 3PL en supply chain-bedrijven.",
+    "rights": "Alle rechten voorbehouden."
+  }
+}

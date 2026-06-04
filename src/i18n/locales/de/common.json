@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "services": "Leistungen",
+    "industries": "Branchen",
+    "locations": "Standorte",
+    "cases": "Fallstudien",
+    "tech": "Tech-Integrationen",
+    "blog": "Insights",
+    "contact": "Kontakt",
+    "cta": "Mehr Fracht-Leads erhalten"
+  },
+  "hero": {
+    "eyebrow": "Logistik-Marketing-Spezialisten",
+    "title": "Digitalagentur für Logistik- & Supply-Chain-Unternehmen",
+    "subtitle": "Wir helfen Spediteuren, 3PL, Transportunternehmen und Frachtmaklern, mit modernen Websites, KI-Ära-SEO (GEO/AIO) und High-Intent-PPC kontinuierlich B2B-Leads zu generieren.",
+    "primaryCta": "Strategiegespräch buchen",
+    "secondaryCta": "Fallstudien ansehen"
+  },
+  "footer": {
+    "tagline": "Die Digitalagentur exklusiv für Logistik, Spedition, Transport, 3PL und Supply Chain.",
+    "rights": "Alle Rechte vorbehalten."
+  }
+}

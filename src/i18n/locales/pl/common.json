@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "services": "Usługi",
+    "industries": "Branże",
+    "locations": "Lokalizacje",
+    "cases": "Case Studies",
+    "tech": "Integracje",
+    "blog": "Insights",
+    "contact": "Kontakt",
+    "cta": "Więcej Leadów Frachtowych"
+  },
+  "hero": {
+    "eyebrow": "Specjaliści Marketingu Logistycznego",
+    "title": "Agencja Marketingu Cyfrowego dla Logistyki i Łańcucha Dostaw",
+    "subtitle": "Pomagamy brokerom frachtowym, 3PL, firmom transportowym i spedytorom pozyskiwać stały strumień leadów B2B dzięki nowoczesnym stronom, SEO ery AI (GEO/AIO) i precyzyjnym kampaniom PPC.",
+    "primaryCta": "Umów Rozmowę Strategiczną",
+    "secondaryCta": "Zobacz Case Studies"
+  },
+  "footer": {
+    "tagline": "Agencja marketingu cyfrowego wyłącznie dla logistyki, spedycji, transportu, 3PL i łańcucha dostaw.",
+    "rights": "Wszelkie prawa zastrzeżone."
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "services": "Services",
+    "industries": "Industries",
+    "locations": "Locations",
+    "cases": "Case Studies",
+    "tech": "Tech Integrations",
+    "blog": "Insights",
+    "contact": "Contact",
+    "cta": "Get More Freight Leads"
+  },
+  "hero": {
+    "eyebrow": "Logistics Marketing Specialists",
+    "title": "Digital Marketing Agency for Logistics & Supply Chain Companies",
+    "subtitle": "We help freight brokers, 3PLs, trucking firms and forwarders generate consistent B2B leads with modern websites, AI-era SEO (GEO/AIO), and high-intent PPC.",
+    "primaryCta": "Book a Strategy Call",
+    "secondaryCta": "See Case Studies"
+  },
+  "footer": {
+    "tagline": "The digital marketing agency built exclusively for logistics, freight forwarding, trucking, 3PL, and supply chain companies.",
+    "rights": "All rights reserved."
+  }
+}

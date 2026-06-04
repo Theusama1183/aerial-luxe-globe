@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "services": "Servicios",
+    "industries": "Industrias",
+    "locations": "Ubicaciones",
+    "cases": "Casos de Éxito",
+    "tech": "Integraciones",
+    "blog": "Insights",
+    "contact": "Contacto",
+    "cta": "Más Leads de Carga"
+  },
+  "hero": {
+    "eyebrow": "Especialistas en Marketing Logístico",
+    "title": "Agencia de Marketing Digital para Logística y Cadena de Suministro",
+    "subtitle": "Ayudamos a brokers, 3PL, transportistas y agentes de carga a generar leads B2B constantes con webs modernas, SEO de la era IA (GEO/AIO) y PPC de alta intención.",
+    "primaryCta": "Agenda una Llamada Estratégica",
+    "secondaryCta": "Ver Casos de Éxito"
+  },
+  "footer": {
+    "tagline": "La agencia de marketing digital exclusiva para logística, transitarios, transporte, 3PL y cadena de suministro.",
+    "rights": "Todos los derechos reservados."
+  }
+}

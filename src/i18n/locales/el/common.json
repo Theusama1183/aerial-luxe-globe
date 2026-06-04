@@ -1,0 +1,23 @@
+{
+  "nav": {
+    "services": "Υπηρεσίες",
+    "industries": "Κλάδοι",
+    "locations": "Τοποθεσίες",
+    "cases": "Case Studies",
+    "tech": "Ενσωματώσεις",
+    "blog": "Insights",
+    "contact": "Επικοινωνία",
+    "cta": "Περισσότερα Leads Φορτίων"
+  },
+  "hero": {
+    "eyebrow": "Ειδικοί στο Logistics Marketing",
+    "title": "Ψηφιακό Marketing Agency για Logistics & Supply Chain",
+    "subtitle": "Βοηθάμε freight brokers, 3PLs, μεταφορικές εταιρείες και forwarders να παράγουν σταθερά B2B leads με σύγχρονα websites, AI-εποχής SEO (GEO/AIO) και στοχευμένα PPC.",
+    "primaryCta": "Κλείστε Στρατηγική Κλήση",
+    "secondaryCta": "Δείτε Case Studies"
+  },
+  "footer": {
+    "tagline": "Το ψηφιακό marketing agency αποκλειστικά για logistics, διαμεταφορές, μεταφορές, 3PL και supply chain.",
+    "rights": "Με επιφύλαξη παντός δικαιώματος."
+  }
+}
