@@ -17,9 +17,9 @@ export function LocaleSwitcher({ dark = false }: { dark?: boolean }) {
     setCurrent(loc);
     setOpen(false);
     if (typeof window !== "undefined") {
-      const path = window.location.pathname.replace(/^\/(en|nl|de|es|it|pl|fr|el|pt)(\/|$)/, "/");
-      const next = loc === "en" ? path : `/${loc}${path === "/" ? "" : path}`;
-      window.history.replaceState({}, "", next || "/");
+      try {
+        localStorage.setItem("locale", loc);
+      } catch {}
     }
   };
 
