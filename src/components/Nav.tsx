@@ -1,11 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -15,12 +17,12 @@ export function Nav() {
   }, []);
 
   const links: { to: string; label: string }[] = [
-    { to: "/services", label: "Services" },
-    { to: "/industries", label: "Industries" },
-    { to: "/locations", label: "Locations" },
-    { to: "/case-studies", label: "Case Studies" },
-    { to: "/tech-integrations", label: "Tech" },
-    { to: "/blog", label: "Insights" },
+    { to: "/services", label: t("nav.services") },
+    { to: "/industries", label: t("nav.industries") },
+    { to: "/locations", label: t("nav.locations") },
+    { to: "/case-studies", label: t("nav.cases") },
+    { to: "/tech-integrations", label: t("nav.tech") },
+    { to: "/blog", label: t("nav.blog") },
   ];
 
   return (
@@ -64,7 +66,7 @@ export function Nav() {
               scrolled ? "bg-[#111] text-white hover:bg-[#222]" : "bg-white text-[#111] hover:bg-white/90"
             }`}
           >
-            Get Freight Leads
+            {t("nav.cta")}
           </Link>
           <button className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
             {open ? <X /> : <Menu />}
@@ -90,7 +92,7 @@ export function Nav() {
               onClick={() => setOpen(false)}
               className="inline-flex rounded-full bg-[#111] px-5 py-2.5 text-sm font-medium text-white"
             >
-              Get Freight Leads
+              {t("nav.cta")}
             </Link>
           </div>
         </div>
