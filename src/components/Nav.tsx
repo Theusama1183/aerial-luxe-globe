@@ -1,11 +1,13 @@
 import { Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
+import { useTranslation } from "react-i18next";
 import { LocaleSwitcher } from "./LocaleSwitcher";
 
 export function Nav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -15,12 +17,12 @@ export function Nav() {
   }, []);
 
   const links: { to: string; label: string }[] = [
-    { to: "/services", label: "Services" },
-    { to: "/industries", label: "Industries" },
-    { to: "/locations", label: "Locations" },
-    { to: "/case-studies", label: "Case Studies" },
-    { to: "/tech-integrations", label: "Tech" },
-    { to: "/blog", label: "Insights" },
+    { to: "/services", label: t("nav.services") },
+    { to: "/industries", label: t("nav.industries") },
+    { to: "/locations", label: t("nav.locations") },
+    { to: "/case-studies", label: t("nav.cases") },
+    { to: "/tech-integrations", label: t("nav.tech") },
+    { to: "/blog", label: t("nav.blog") },
   ];
 
   return (
