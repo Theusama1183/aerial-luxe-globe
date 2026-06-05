@@ -66,7 +66,7 @@ export function Nav() {
               scrolled ? "bg-[#111] text-white hover:bg-[#222]" : "bg-white text-[#111] hover:bg-white/90"
             }`}
           >
-            Get Freight Leads
+            {t("nav.cta")}
           </Link>
           <button className="lg:hidden" onClick={() => setOpen(!open)} aria-label="Menu">
             {open ? <X /> : <Menu />}
