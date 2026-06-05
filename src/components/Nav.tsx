@@ -92,7 +92,7 @@ export function Nav() {
               onClick={() => setOpen(false)}
               className="inline-flex rounded-full bg-[#111] px-5 py-2.5 text-sm font-medium text-white"
             >
-              Get Freight Leads
+              {t("nav.cta")}
             </Link>
           </div>
         </div>
